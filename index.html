@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+			crossorigin="anonymous"
+		/>
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+	<body>
+		<div class="container">
+			<div class="row row-first">
+				<div class="col d-flex justify-content-end">
+					<button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+						Згенерувати користувача
+					</button>
+				</div>
+				<div class="col">
+					<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticExample">
+						Створити користувача
+					</button>
+				</div>
+			</div>
+			<div class="user-data col-12">
+				<div class="user-data__content d-inline-flex flex-column" id="results"></div>
+			</div>
+		</div>
+		<div class="container">
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col">Аватар</th>
+						<th scope="col">Ім'я та прізвище</th>
+						<th scope="col">Електронна адреса</th>
+						<th scope="col">Номер телефону</th>
+						<th scope="col">Детальна інформація</th>
+					</tr>
+				</thead>
+				<tbody id="list"></tbody>
+			</table>
+		</div>
+		<div id="modals"></div>
+		<div
+			class="modal fade"
+			id="staticBackdrop"
+			data-bs-backdrop="static"
+			data-bs-keyboard="false"
+			tabindex="-1"
+			aria-labelledby="staticBackdropLabel"
+			aria-hidden="true"
+		>
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="staticBackdropLabel">Генерація користувача</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<form class="row g-3" action="/" method="POST" id="form">
+							<div class="col">
+								<label for="validationCustom04" class="form-label">Гендер користувача</label>
+								<select class="form-select" id="validationCustom04 w1" name="gender1" required>
+									<option selected value="men">Чоловік</option>
+									<option value="women">Жінка</option>
+								</select>
+							</div>
+							<div class="col-12">
+								<button
+									class="btn btn-primary"
+									type="submit"
+									onclick="removeElements()"
+									id="click"
+									class="click"
+									data-bs-dismiss="modal"
+								>
+									Генерувати
+								</button>
+								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрити</button>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer"></div>
+				</div>
+			</div>
+		</div>
+
+		<div
+			class="modal"
+			id="staticExample"
+			data-bs-backdrop="static"
+			data-bs-keyboard="false"
+			tabindex="-1"
+			aria-labelledby="staticBackdropLabel"
+			aria-hidden="true"
+		>
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="staticBackdropLabel">Створення користувача</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<form action="" class="row g-3" id="form2">
+							<div class="col-md-6">
+								<label for="firstName" class="form-label">Ім'я</label>
+								<input
+									type="text"
+									class="form-control"
+									id="firstName"
+									name="first"
+									required
+									placeholder="Введіть ім'я"
+								/>
+							</div>
+							<div class="col-md-6">
+								<label for="lastName" class="form-label">Прізвище</label>
+								<input
+									type="text"
+									class="form-control"
+									id="lastName"
+									name="last"
+									required
+									placeholder="Введіть Прізвище"
+								/>
+							</div>
+							<div class="col-md-12">
+								<label for="emailInfo" class="form-label">E-mail</label>
+								<input
+									type="email"
+									class="form-control"
+									id="emailInfo"
+									name="email"
+									required
+									placeholder="Введіть E-mail"
+								/>
+							</div>
+							<div class="col-md-12">
+								<label class="control-label col-md-12">Номер телефону</label>
+								<div class="col-sm-10">
+									<input
+										type="text"
+										name="phone"
+										class="form-control"
+										name="phoneNumber"
+										id="phoneNumber"
+										placeholder="+(380) 99-999-9999"
+										required
+									/>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<label for="adress" class="form-label">Адреса</label>
+								<input type="text" class="form-control" id="adress" name="adress" />
+							</div>
+							<div class="col-md-12">
+								<label for="selectMale" class="form-label">Виберіть стать</label>
+								<select class="form-select" required name="select">
+									<option value="" selected></option>
+									<option value="male">Чоловік</option>
+									<option value="female">Жінка</option>
+								</select>
+							</div>
+							<div class="chose-image">
+								<figure class="image-container">
+									<img id="chosen-image" class="rounded-3" />
+									<figcaption id="file-name"></figcaption>
+								</figure>
+								<input type="file" id="upload-button" accept="image/*" name="image" />
+								<label for="upload-button"> <i class="fas fa-upload"></i> &nbsp; Оберіть зображеня для аватару </label>
+							</div>
+							<div class="col-md-12 d-flex justify-content-center">
+								<button
+									type="submit"
+									class="btn btn-primary btnsubmit"
+									onclick="removeElements()"
+									id="btn"
+									data-bs-dismiss="modal"
+								>
+									Створити користувача
+								</button>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer"></div>
+				</div>
+			</div>
+		</div>
+		<div id="modals"></div>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+			crossorigin="anonymous"
+		></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
+		<script src="js/script.js"></script>
+	</body>
+</html>

@@ -1,0 +1,89 @@
+.container {
+}
+.row {
+}
+.col {
+}
+.btn {
+}
+.btn-primary {
+}
+.btn-sm {
+}
+.row-first {
+	margin-top: 60px;
+	margin-bottom: 60px;
+}
+
+.image-container {
+	width: 90%;
+	margin: 0 auto 30px auto;
+}
+.image-container img {
+	display: block;
+	position: relative;
+	max-width: 100%;
+	max-height: 400px;
+	margin: auto;
+}
+figcaption {
+	margin: 20px 0 30px 0;
+	text-align: center;
+	color: #2a292a;
+}
+input[type="file"] {
+	display: none;
+}
+.chose-image label {
+	display: block;
+	position: relative;
+	background-color: #025bee;
+	color: #ffffff;
+	font-size: 18px;
+	text-align: center;
+	width: 300px;
+	padding: 10px 0;
+	border-radius: 5px;
+	margin: auto;
+	cursor: pointer;
+}
+
+.user-data{
+	display: flex;
+	justify-content: center	;
+}
+.user-data__content{
+	background-color: #9de2ff;
+	padding: 50px;
+	border-radius:15px ;
+} 
+.user-data__image{
+	margin-bottom: 30px;
+}
+.user-data__text{
+	display: flex;
+	gap: 10px;
+}
+.user-data__name{
+	background-color: #fff;
+	border-radius: 15px;
+	padding: 35px;
+	box-shadow: 1px 1px 10px black;
+}
+@media (max-width:360px){
+	.user-data__content{
+
+		padding: 20px;
+
+	} 
+}
+
+
+.hidden {
+	display: none;
+}
+
+.user-data__image{
+	display: flex;
+	justify-content: center;
+}
